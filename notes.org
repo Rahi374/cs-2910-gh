@@ -24,6 +24,9 @@ and for ric, make sure to set env var:
 ~PKG_CONFIG_PATH=/usr/local/contrib/lib64/pkgconfig~
 opencv4                 
 
+and make sure to pick up the shared objects:
+~LD_LIBRARY_PATH=/usr/local/contrib/lib64:$LD_LIBRARY_PATH~
+
 also point to nvcc, either in the makefile with NVCC, or by adding to path
 - ~/usr/local/cuda/bin~
 - or ~/opt/cuda-10.1/bin~ on ric
