@@ -1,0 +1,114 @@
+* links:
+https://medium.com/@manivannan_data/object-tracking-referenced-with-the-previous-frame-using-euclidean-distance-49118730051a
+https://github.com/yehengchen/Object-Detection-and-Tracking
+https://github.com/yehengchen/Object-Detection-and-Tracking/tree/master/OneStage/yo
+https://github.com/yehengchen/Object-Detection-and-Tracking/tree/master/OneStage/yolo/deep_sort_yolov3
+
+* notes
+
+to compile darknet with cuda and opencv, set GPU and OPENCV in the first few
+lines of Makefile to 1
+
+don't forget to ~ln -s /usr/lib/whatever/opencv/opencv.pc /usr/lib/pkgconfig/opencv.pc~
+
+also apply that's guy's update patch:
+(honestly, probably need the whole pr at
+[https://github.com/pjreddie/darknet/pull/1348/commits]), but at least just
+[https://github.com/pjreddie/darknet/pull/1348/commits/24cff08086b573c3341e91d072430c9f624a2208]
+is good enough, might need to tweak a bit though
+
+and force opencv4, otherwise it won't find opencv2/opencv.hpp
+- my version of the aforementioned commit
+
+also point to nvcc, either in the makefile with NVCC, or by adding to path
+- ~/usr/local/cuda/bin~
+- or ~/opt/cuda-10.1/bin~ on ric
+
+* baseline
+
+base darknet run
+~./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg~
+
+on neptunite:
+data/dog.jpg: Predicted in 12.952805 seconds.
+dog: 100%
+truck: 92%
+bicycle: 99%
+
+on peridot:
+data/dog.jpg: Predicted in 79.676022 seconds.
+dog: 100%
+truck: 92%
+bicycle: 99%
+
+of course cpu takes longer on peridot :)
+
+
+hm, regular run with real-time webcam crashes
+137 = sigkill, probably oom?
+let's try the tiny weights
+
+it runs on tiny? but freezes? maybe network bw issue? let's try on hdmi
+hm yeah looks like it crashed
+
+hm looks like not enough power coz it sometimes crashes with just qv4l2 or
+just regular image detection (with tiny weights)
+imma get the 5V/4A power adapter
+i only have 5V/2A right now :/
+
+power adapter arrived! yolo tiny runs! but it can only recognize people...
+and misclassified my watch as a cellphone once lol
+i wonder if it can work with the regular yolo... nope, it still dies at step
+17, probably oom
+yeah it got killed by the oom killer - ah, we only have 4GB of ram
+- swap? looks like it comes with 2GB of swap
+
+great, undocumented parameters to detector demo
+-w for width, -h for height, -fps for fps
+and i think these extra params go after the cfgs and the weights and stuff
+coz those use positional args
+also after weights you can specify input file name
+
+i got 10 fps with 480p! and 240p. and 160p.
+8 fps with 720p
+5 fps with 1080p
+
+hm, 9 fps with motchallenge 17 @360p
+
+* code stuff
+
+okay while waiting for the adapter, let's check the code
+entry point is ~examples/detector.c:run_detector()~
+that calls into ~src/demo.c:demo()~, which is the main run loop for the thing
+and then ~fetch_in_thread()~ and ~detect_in_thread()~ is the main contents of the
+loop
+looks like all symbols are exported by libdarknet so it shouldn't be that
+hard to stitch together? anyway im not done reading fetch and detect yet
+
+~fetch_in_thread()~:
+- free buffer
+- get buffer from stream: ~src/image_opencv.cpp:get_image_from_stream()~
+- put the boxed image into the main image buffer: ~src/image.c:letterbox_image_into()~
+
+where does buff_letter come from? it is predicted from the last frame in
+~detect_in_thread()~?
+
+~letterbox_image_into()~:
+- ~resize_image()~ (i think it's resizing to the size of the bounding box?)
+- ~embed_image()~ - puts an image into an image... here it's putting the boxed
+  image into the main image it looks like
+- ~free_image()~ - free the temporarily allocated ~image from resize_image()~
+
+~detect_in_thread()~:
+- i think applying the network: ~src/network.c:network_predict()~
+- im guessing caching the network/application: ~src/demo.c:remember_network()~
+- not sure: ~src/demo.c:avg_predictions()~
+  - goes into ~src/box.c:do_nms_obj()~
+    - i have no idea what this does - thanks for the commit message: "MERRY
+      CHRISTMAS I BROKE ALL YOUR DETECTION THINGS"
+- ~draw_detections()~
+- ~free_detections()~, and update the (global) buffer index
+
+~src/network.c:network_predict()~:
+- ~forward_network()~ -> ~forward_network_gpu()~
+  - cuda stuff

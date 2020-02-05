@@ -1,0 +1,51 @@
+* Project 1
+
+** Baseline
+
+By 2/8
+
+CPU+GPU with multiple cameras
+
+Single process, receive data from k cameras
+
+Make baseline code work:
+a) CPU sends data to GPU
+b) GPU runs YOLO for detection
+c) results copied back to CPU for object tracking
+d) send to GPU for YOLO sequentially for each camera
+
+Testing and measuring, using real-life video streams:
+a) measure accuracy and precision of object detection
+b) percentage of time object was tracked compared to ground truth
+c) response time for object detection
+d) response time for object tracking each frame
+e) CPU and GPU utilizations
+f) throughput (frames per process per second)
+
+** Part 1: Single Process
+
+By 2/27
+
+1. Measure how many camera streams can be handled by a single process
+2. Offload object tracking to GPU
+   - need to find implementation on GPU
+   - CPU (or GPU) control running sequence
+3. Break YOLO and tracking job into smaller pieces and pipeline to improve GPU
+   utilization
+
+** Part 2: Mobile
+
+Skip? Come back here after part 3?
+
+Do object detection and tracking on the edge? And send just detection and
+tracking results to master machine?
+
+** Part 3: Multiple processes and scalability
+
+By 3/26
+
+1. Associate one camera to one process
+2. Do Part 1, but for every process
+3. Scheduler for these camera processes
+   - higher throughput or higher responsiveness, eg, SJF, (predicted) number
+     of objects, EDF, etc) 
