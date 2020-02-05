@@ -20,6 +20,10 @@ is good enough, might need to tweak a bit though
 and force opencv4, otherwise it won't find opencv2/opencv.hpp
 - my version of the aforementioned commit
 
+and for ric, make sure to set env var:
+~PKG_CONFIG_PATH=/usr/local/contrib/lib64/pkgconfig~
+opencv4                 
+
 also point to nvcc, either in the makefile with NVCC, or by adding to path
 - ~/usr/local/cuda/bin~
 - or ~/opt/cuda-10.1/bin~ on ric
