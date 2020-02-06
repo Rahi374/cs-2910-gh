@@ -85,6 +85,26 @@ i got 10 fps with 480p! and 240p. and 160p.
 
 hm, 9 fps with motchallenge 17 @360p
 
+
+hm darknet with an input video doesn't work for some reason :/
+on ric at least; it works on neptunite
+
+#+BEGIN_SRC log
+./darknet detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights ../../one_evening_in_campo_santa_maria_nova_venice_1080p.mp4
+...
+video file: ../../one_evening_in_campo_santa_maria_nova_venice_1080p.mp4
+[ WARN:0] global /usr/local/contrib/opencv/src/modules/videoio/src/cap_gstreamer.cpp (1743) handleMessage OpenCV | GStreamer warning: your GStreamer installation is missing a required plugin
+[ WARN:0] global /usr/local/contrib/opencv/src/modules/videoio/src/cap_gstreamer.cpp (1743) handleMessage OpenCV | GStreamer warning: your GStreamer installation is missing a required plugin
+[ WARN:0] global /usr/local/contrib/opencv/src/modules/videoio/src/cap_gstreamer.cpp (1759) handleMessage OpenCV | GStreamer warning: Embedded video playback halted; module uridecodebin0 reported: Your GStreamer installation is missing a plug-in.
+[ WARN:0] global /usr/local/contrib/opencv/src/modules/videoio/src/cap_gstreamer.cpp (888) open OpenCV | GStreamer warning: unable to start pipeline
+[ WARN:0] global /usr/local/contrib/opencv/src/modules/videoio/src/cap_gstreamer.cpp (480) isPipelinePlaying OpenCV | GStreamer warning: GStreamer: pipeline have not been created
+Couldn't connect to webcam.
+: Success
+darknet: ./src/utils.c:256: error: Assertion `0' failed.
+zsh: abort (core dumped)  ./darknet detector demo cfg/coco.data
+cfg/yolov3.cfg yolov3.weights 
+#+END_SRC
+
 * code stuff
 
 okay while waiting for the adapter, let's check the code
