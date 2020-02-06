@@ -31,6 +31,9 @@ also point to nvcc, either in the makefile with NVCC, or by adding to path
 - ~/usr/local/cuda/bin~
 - or ~/opt/cuda-10.1/bin~ on ric
 
+also if you want to use opencv2  with python3 on ric:
+~sys.path.append('/usr/local/contrib/lib/python3.6/site-packages')~
+
 * baseline
 
 base darknet run
