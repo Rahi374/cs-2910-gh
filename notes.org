@@ -119,7 +119,7 @@ alright, i'll convert the video to... wait ffmpeg comes with libavcodec... is
 that sufficient?
 
 okay yeah i had to install ffmpeg (4.2.2) and then gst-libav (1.10.4, to
-match the gstreamer version on ric)
+match the gstreamer version on ric). oh also needed meson to build gst-libav.
 also set the environment variable: see above
 
 okay so now the darknet demo detector works! on the "one evening in campo sant
