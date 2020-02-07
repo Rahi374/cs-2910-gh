@@ -125,6 +125,52 @@ also set the environment variable: see above
 okay so now the darknet demo detector works! on the "one evening in campo sant
 maria nova venice" 1080p. i get 12~17 fps, and it segfaults :)
 
+oops i guess i was running the wrong version of the video. this time i tried
+MOT17-02-DPM. got 3~18 fps, and it still segfaults. it does get through most
+(or all) of the video, though (but also it's only 40 seconds, and the last
+one was a lot more).
+
+okay here's the segfault:
+#+BEGIN_SRC log
+==51380== Process terminating with default action of signal 11 (SIGSEGV)
+==51380==  Access not within mapped region at address 0x51F02D770
+==51380==    at 0x9B30960: icv_l9_owniSwapChannels_8u_C3R (in /afs/cs.pitt.edu/system/amd64_cen7/usr/local/contrib/lib64/libopencv_imgproc.so.4.2.0)
+==51380==    by 0x9B2FDE6: icv_l9_ippiSwapChannels_8u_C3R (in /afs/cs.pitt.edu/system/amd64_cen7/usr/local/contrib/lib64/libopencv_imgproc.so.4.2.0)
+==51380==    by 0x96AF774: cv::CvtColorIPPLoop_Invoker<cv::IPPReorderFunctor>::operator()(cv::Range const&) const (in /afs/cs.pitt.edu/system/amd64_cen7/usr/local/contrib/lib64/libopencv_imgproc.so.4.2.0)
+==51380==    by 0xB0B963D: (anonymous namespace)::ParallelLoopBodyWrapper::operator()(cv::Range const&) const (in /afs/cs.pitt.edu/system/amd64_cen7/usr/local/contrib/lib64/libopencv_core.so.4.2.0)
+==51380==    by 0xB0B9FDA: cv::ParallelJob::execute(bool) [clone .constprop.44] (in /afs/cs.pitt.edu/system/amd64_cen7/usr/local/contrib/lib64/libopencv_core.so.4.2.0)
+==51380==    by 0xB0BAC9C: cv::WorkerThread::thread_body() (in /afs/cs.pitt.edu/system/amd64_cen7/usr/local/contrib/lib64/libopencv_core.so.4.2.0)
+==51380==    by 0xB0BAE52: cv::WorkerThread::thread_loop_wrapper(void*) (in /afs/cs.pitt.edu/system/amd64_cen7/usr/local/contrib/lib64/libopencv_core.so.4.2.0)
+==51380==    by 0x166B6DD4: start_thread (in /usr/lib64/libpthread-2.17.so)
+==51380==    by 0x169C8EAC: clone (in /usr/lib64/libc-2.17.so)
+==51380==  If you believe this happened as a result of a stack
+==51380==  overflow in your program's main thread (unlikely but
+==51380==  possible), you can try to increase the size of the
+==51380==  main thread stack using the --main-stacksize= flag.
+==51380==  The main thread stack size used in this run was 8388608.
+==51380== 
+==51380== HEAP SUMMARY:
+==51380==     in use at exit: 7,464,752,931 bytes in 220,573 blocks
+==51380==   total heap usage: 513,540 allocs, 292,967 frees, 8,719,829,795 bytes allocated
+==51380== 
+==51380== LEAK SUMMARY:
+==51380==    definitely lost: 16,549 bytes in 2 blocks
+==51380==    indirectly lost: 0 bytes in 0 blocks
+==51380==      possibly lost: 4,179,136 bytes in 8,483 blocks
+==51380==    still reachable: 7,460,360,630 bytes in 211,014 blocks
+==51380==                       of which reachable via heuristic:
+==51380==                         stdstring          : 11,695 bytes in 213 blocks
+==51380==                         length64           : 11,680 bytes in 253 blocks
+==51380==                         newarray           : 2,112 bytes in 52 blocks
+==51380==         suppressed: 0 bytes in 0 blocks
+==51380== Rerun with --leak-check=full to see details of leaked memory
+==51380== 
+==51380== For counts of detected and suppressed errors, rerun with: -v
+==51380== Use --track-origins=yes to see where uninitialised values come from
+==51380== ERROR SUMMARY: 10000000 errors from 5 contexts (suppressed: 0 from 0)
+zsh: segmentation fault (core dumped)  valgrind ./darknet detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights 
+#+END_SRC
+
 * code stuff
 
 okay while waiting for the adapter, let's check the code
