@@ -31,13 +31,19 @@ also point to nvcc, either in the makefile with NVCC, or by adding to path
 - ~/usr/local/cuda/bin~
 - or ~/opt/cuda-10.1/bin~ on ric
 
-also if you want to use opencv2  with python3 on ric:
-~sys.path.append('/usr/local/contrib/lib/python3.6/site-packages')~
+also if you want to use opencv2 with python3 on ric:
+~PYTHONPATH=/usr/local/contrib/lib/python3.6/site-packages:$PYTHONPATH~
+
+to use the ffmpeg codecs on gstreamer:
+~GST_PLUGIN_PATH=/usr/local/contrib/lib/gstreamer-1.0:$GST_PLUGIN_PATH~
 
 * baseline
 
 base darknet run
 ~./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg~
+
+live detector
+~./darknet detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights videofile~
 
 on neptunite:
 data/dog.jpg: Predicted in 12.952805 seconds.
@@ -104,6 +110,18 @@ darknet: ./src/utils.c:256: error: Assertion `0' failed.
 zsh: abort (core dumped)  ./darknet detector demo cfg/coco.data
 cfg/yolov3.cfg yolov3.weights 
 #+END_SRC
+
+hm list gstreamer plugins...
+ah, ric is missing h264 decoder lol. and a bunch of other codecs actually
+alright, i'll convert the video to... wait ffmpeg comes with libavcodec... is
+that sufficient?
+
+okay yeah i had to install ffmpeg (4.2.2) and then gst-libav (1.10.4, to
+match the gstreamer version on ric)
+also set the environment variable: see above
+
+okay so now the darknet demo detector works! on the "one evening in campo sant
+maria nova venice" 1080p. i get 12~17 fps, and it segfaults :)
 
 * code stuff
 
