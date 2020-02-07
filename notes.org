@@ -22,7 +22,9 @@ and force opencv4, otherwise it won't find opencv2/opencv.hpp
 
 and for ric, make sure to set env var:
 ~PKG_CONFIG_PATH=/usr/local/contrib/lib64/pkgconfig~
-opencv4                 
+for opencv4. tbh the lib (non-64) version should be added as well, but with
+what i set up on ric, opencv4 is the only pkgconfig in lib64, and all the
+pkgconfigs in lib are for libav stuff.
 
 and make sure to pick up the shared objects:
 ~LD_LIBRARY_PATH=/usr/local/contrib/lib64:$LD_LIBRARY_PATH~
