@@ -41,6 +41,8 @@ to use the ffmpeg codecs on gstreamer:
 
 * baseline
 
+** First try
+
 base darknet run
 ~./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg~
 
@@ -93,6 +95,7 @@ i got 10 fps with 480p! and 240p. and 160p.
 
 hm, 9 fps with motchallenge 17 @360p
 
+** Getting the video codecs, on ric
 
 hm darknet with an input video doesn't work for some reason :/
 on ric at least; it works on neptunite
@@ -129,6 +132,8 @@ oops i guess i was running the wrong version of the video. this time i tried
 MOT17-02-DPM. got 3~18 fps, and it still segfaults. it does get through most
 (or all) of the video, though (but also it's only 40 seconds, and the last
 one was a lot more).
+
+** Fixing the segfault
 
 okay here's the segfault:
 #+BEGIN_SRC log
@@ -170,6 +175,171 @@ okay here's the segfault:
 ==51380== ERROR SUMMARY: 10000000 errors from 5 contexts (suppressed: 0 from 0)
 zsh: segmentation fault (core dumped)  valgrind ./darknet detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights 
 #+END_SRC
+
+ah, this is the right segfault (i think):
+
+#+BEGIN_SRC log
+==61104== 
+==61104== Process terminating with default action of signal 8 (SIGFPE)
+==61104==  Integer divide by zero at address 0x1012255804
+==61104==    at 0x490B78: correct_yolo_boxes (in /afs/cs.pitt.edu/usr0/pye1/cs-2910-gh/darknet/darknet)
+==61104==    by 0x491263: get_yolo_detections (in /afs/cs.pitt.edu/usr0/pye1/cs-2910-gh/darknet/darknet)
+==61104==    by 0x4627C7: fill_network_boxes (in /afs/cs.pitt.edu/usr0/pye1/cs-2910-gh/darknet/darknet)
+==61104==    by 0x46297E: get_network_boxes (in /afs/cs.pitt.edu/usr0/pye1/cs-2910-gh/darknet/darknet)
+==61104==    by 0x480477: detect_in_thread (in /afs/cs.pitt.edu/usr0/pye1/cs-2910-gh/darknet/darknet)
+==61104==    by 0x166B6DD4: start_thread (in /usr/lib64/libpthread-2.17.so)
+==61104==    by 0x169C8EAC: clone (in /usr/lib64/libc-2.17.so)
+==61104== 
+==61104== HEAP SUMMARY:
+==61104==     in use at exit: 7,378,105,383 bytes in 217,404 blocks
+==61104==   total heap usage: 717,776 allocs, 500,372 frees, 22,314,494,019 bytes allocated
+==61104== 
+==61104== LEAK SUMMARY:
+==61104==    definitely lost: 16,549 bytes in 2 blocks
+==61104==    indirectly lost: 0 bytes in 0 blocks
+==61104==      possibly lost: 3,315,272 bytes in 8,484 blocks
+==61104==    still reachable: 7,374,577,706 bytes in 207,847 blocks
+==61104==                       of which reachable via heuristic:
+==61104==                         stdstring          : 11,695 bytes in 213 blocks
+==61104==                         length64           : 11,680 bytes in 253 blocks
+==61104==                         newarray           : 2,112 bytes in 52 blocks
+==61104==         suppressed: 0 bytes in 0 blocks
+==61104== Rerun with --leak-check=full to see details of leaked memory
+==61104== 
+==61104== For counts of detected and suppressed errors, rerun with: -v
+==61104== Use --track-origins=yes to see where uninitialised values come from
+==61104== ERROR SUMMARY: 10000000 errors from 5 contexts (suppressed: 0 from 0)
+zsh: floating point exception (core dumped)  valgrind ./darknet detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights 
+#+END_SRC
+
+okay let's start the debugging
+- oh wait valgrind already gave us the callstack lol
+
+#+BEGIN_SRC call stack
+start_thread
+> detect_in_thread
+  > get_network_boxes
+    > fill_network_boxes
+      > get_yolo_detection
+        > correct_yolo_boxes
+#+END_SRC
+
+hm okay so i actually checked all my debug prints, and they all have 960x540,
+which is the resolution of the video. when the program crashes with the
+divide-by-zero, those are zero
+- soooo maybe it's the last frame that's killing it?
+
+i think it's not stopping at all actually
+
+so ~get_network_boxes~ (from ~avg_preditions~ in ~detect_in_thread~) gets the
+buffer height and width from the global video buffer ring buffer, which has
+zeroes, and causes ~correct_yolo_boxes~ down the call stack to divide-by-zero
+
+- ~get_image_from_stream()~ returns an empty 0x0 frame when no frame is
+  available
+- global video buffer rig buffer ~buff~
+- set ~demo_done~ to true when done
+
+ah, okay ~fetch_in_thread()~ does actually set ~demo_done~ to true when
+~get_image_from_stream()~ returns an empty frame
+- the problem is that ~fetch_in_thread()~ and ~detect_in_thread()~ are both
+  in separate threads, racing :)
+  - i think the solution is to just put an extra layer of protection in
+    ~detect_in_thread()~, such that if the height and width are zero, then
+    don't do anything (coz ~fetch_in_thread()~ is alraedy going to end the
+    demo loop, so we just have to avoid the crash)
+
+oh also it looks like ~avg_predictions~ was using buff index 0 all the time
+so i fixed that to buff_index (log2)
+
+and yeah i added extra protection in ~detect_in_thread()~ to exit if the
+frame size is zero. it worked! (log3)
+
+so now time to actually put stuff together
+
+** Putting stuff together
+
+idk if this helps? anyway saving the link just in case
+[[https://github.com/entrehuihui/darknet-golang/]]
+
+also we'll use this C++ implementation of deep sort
+[[https://github.com/oylz/DS]]
+(for some reason all the other implementations are in python)
+
+~parse_network_cfg~
+
+oh yeah forgot to note down that the entry point is in ~examples/darknet~
+
+there's ~run_detector()~ and ~test_detector()~... i wonder how different they
+are
+- this might be the key to making a simple enough pipeline :)
+- then just need to hook it up with the C++ deep sort implementation...
+
+okay so im comparing from ~test_detector()~ to ~run_detector()~:
+
+#+BEGIN_SRC C
+read_data_cfg()
+option_find_str(..., "data/names.list")
+get_labels()
+// then ~run_detector()~ calls ~demo()~
+load_alphabet()
+load_network()
+set_batch_network()
+#+END_SRC
+
+okay im pretty sure that's the initialization... let's go ahead and burn that
+to a file
+
+function prototype for our ~test_detector()~, with default values:
+#+BEGIN_SRC C
+void test_detector(char *datacfg : "cfg/coco.data",
+                   char *cfgfile : "cfg/yolov3.cfg",
+                   char *weightfile : "yolov3.weights",
+                   char *filename : data/dog.jpg,
+                   float thresh : 0.5,
+                   float hier_thresh : 0.5,
+                   char *outfile : outfile,
+                   int fullscreen : fullscreen);
+#+END_SRC
+
+after that... (for single image)
+#+BEGIN_SRC C
+float *X = sized.data;
+time = what_time_is_it_now();
+network_predict(net, X);
+printf("%s: Predicted in %f seconds.\n", input, what_time_is_it_now()-time);
+
+int nboxes = 0;
+detection *dets = get_network_boxes(net, im.w, im.h, thresh, hier_thresh, 0, 1, &nboxes);
+if (nms)
+      do_nms_sort(dets, nboxes, l.classes, nms);
+
+draw_detections(im, dets, nboxes, thresh, names, alphabet, l.classes);
+free_detections(dets, nboxes);
+#+END_SRC
+
+okay i think i got a minimal darknet application
+
+** Misc stuff from putting stuff together
+
+after ~network_predict(net, X);~:
+#+BEGIN_SRC C
+// not sure what this does; anyway it comes from demo
+// copy if you need it, but let's try without for now
+// remember_network(net);
+#+END_SRC
+
+pretty sure we can ignore the ret val of this, coz i think it's just a keycode?
+
+Not necessary to make a window, coz we'll draw the frames later
+
+Not sure what ~set_batch_network()~ does
+
+** Documentation for our version
+
+gpu is required
+
+optional ~-i N~ - N to set the gpu index (default 0)
 
 * code stuff
 
