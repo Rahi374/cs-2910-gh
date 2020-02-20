@@ -262,10 +262,6 @@ so now time to actually put stuff together
 idk if this helps? anyway saving the link just in case
 [[https://github.com/entrehuihui/darknet-golang/]]
 
-also we'll use this C++ implementation of deep sort
-[[https://github.com/oylz/DS]]
-(for some reason all the other implementations are in python)
-
 ~parse_network_cfg~
 
 oh yeah forgot to note down that the entry point is in ~examples/darknet~
@@ -334,6 +330,20 @@ pretty sure we can ignore the ret val of this, coz i think it's just a keycode?
 Not necessary to make a window, coz we'll draw the frames later
 
 Not sure what ~set_batch_network()~ does
+
+** Connecting the detector
+
+hm so the original implementation is in python:
+[[https://github.com/nwojke/deep_sort]]
+
+and there are some c++ implementations...
+- [[https://github.com/oylz/DS]] - old, can't get it to compile
+- [[https://github.com/apennisi/deep_sort]] - looks promising
+- [[https://github.com/shaoshengsong/DeepSORT]] - not sure, but another one
+  in case the previous one fails
+
+in the worst case maybe i'll call into python or something... or implement my
+own :/
 
 ** Documentation for our version
 
