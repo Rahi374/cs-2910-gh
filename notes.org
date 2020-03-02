@@ -39,6 +39,61 @@ also if you want to use opencv2 with python3 on ric:
 to use the ffmpeg codecs on gstreamer:
 ~GST_PLUGIN_PATH=/usr/local/contrib/lib/gstreamer-1.0:$GST_PLUGIN_PATH~
 
+hm, tf2 doesn't workg with the above pythonpath...? but installed --user
+works?
+
+
+when you run yolov3-tf2 make sure to remove the /opt cuda path from
+LD_LIBRARY_PATH
+
+and for darknet_video.py make sure to add . to LD_LIBRARY_PATH - oh wait you
+only need to do that if you want to run yolo_console_dll (uselib), otherwise
+for darknet_video.py you don't need anything special
+
+hm... i have a guess deep_sort from deep_sort_yolov3 doesn't depend on tf at
+all (the yolov3 portion depends on tf1), so we might actually be able to use
+that in python darknet... let's see :)
+- from here [[https://github.com/Qidian213/deep_sort_yolov3/]]
+
+also if you get that annoying qtwidget thread thing, just try completely
+logging out and logging in again (ie. reset the entire ssh connection)
+
+** some measurements (just comparing fps for now)
+
+fps comparison for yolov3 implementations
+
+all these tests were run on MOT17-02-DPM.mp4
+
+- old darknet is with my wrapper
+- yolov3-tf: [[https://github.com/zzh8829/yolov3-tf2]]
+- tf2-ex: [[https://github.com/YunYang1994/TensorFlow2.0-Examples/tree/master/4-Object_Detection/YOLOV3]]
+
+|        |new darknet|old darknet|yolov3-tf |tf2-ex|
+|        | (fps)     |(fps)      |(fps)     |(fps) |
+| min    |      0.00 |       0.39|      0.20|  0.50|
+| 1st q  |      6.30 |       3.73|      2.76|  4.89|
+| median |     16.90 |       7.04|      4.09|  4.96|
+| 3rd q  |     26.70 |      11.93|      8.21|  5.00|
+| max    |     46.00 |      13.04|     12.65|  5.25|
+| mean   |     17.78 |       7.41|      5.86|  4.85|
+| stddev |     12.05 |       3.52|      3.66|  0.48|
+
+histogram of fps of my application (C) using old darknet for yolov3:
+
+[[./img/yolov3-dn-fps.png]]
+
+histogram of fps of python implementation of yolov3 with tf2-ex:
+
+[[./img/yolov3-tf-fps.png]]
+
+histogram of fps of new darknet for detection:
+
+[[./img/darknet-new-fps-detect.png]]
+
+histogram of fps of yolov3-tf:
+
+[[./img/yolov3-tf2-fps-detect.png]]
+
 * baseline
 
 ** First try
@@ -344,6 +399,23 @@ and there are some c++ implementations...
 
 in the worst case maybe i'll call into python or something... or implement my
 own :/
+
+** Converting to tensorflor
+
+Mosse and Ridrigo recommend that i switch to tf... that might be better
+actually :/
+
+DS doesn't want to play nice with boost...
+
+tf is having a hard time compiling... i hope it works
+
+pip worked for some reason
+
+also deep_sort (C++) didn't work coz boost version mismatch? missing header
+
+and DeepSort (also C++) has no build so um yeah :/
+
+we're going to have to go with the tf implementations...
 
 ** Documentation for our version
 
