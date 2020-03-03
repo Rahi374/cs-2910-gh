@@ -50,11 +50,6 @@ and for darknet_video.py make sure to add . to LD_LIBRARY_PATH - oh wait you
 only need to do that if you want to run yolo_console_dll (uselib), otherwise
 for darknet_video.py you don't need anything special
 
-hm... i have a guess deep_sort from deep_sort_yolov3 doesn't depend on tf at
-all (the yolov3 portion depends on tf1), so we might actually be able to use
-that in python darknet... let's see :)
-- from here [[https://github.com/Qidian213/deep_sort_yolov3/]]
-
 also if you get that annoying qtwidget thread thing, just try completely
 logging out and logging in again (ie. reset the entire ssh connection)
 
@@ -416,6 +411,55 @@ also deep_sort (C++) didn't work coz boost version mismatch? missing header
 and DeepSort (also C++) has no build so um yeah :/
 
 we're going to have to go with the tf implementations...
+
+hm... i have a guess deep_sort from deep_sort_yolov3 doesn't depend on tf at
+all (the yolov3 portion depends on tf1), so we might actually be able to use
+that in python darknet... let's see :)
+- from here [[https://github.com/Qidian213/deep_sort_yolov3/]]
+
+*** new darknet python detections format
+
+[bytestring of label, confidence, bounding box]
+
+[(b'person', 0.9992530941963196, (308.0138244628906, 232.64064025878906,
+38.53749084472656, 138.75567626953125)), (b'person', 0.9866634607315063,
+(137.091064453125, 220.35328674316406, 25.921817779541016, 97.487060546875)),
+(b'person', 0.9322742819786072, (162.37936401367188, 198.82156372070312,
+9.020377159118652, 42.37779235839844)), (b'person', 0.837138831615448,
+(375.0699462890625, 200.4085235595703, 22.553640365600586,
+59.19319534301758)), (b'person', 0.8317587971687317, (330.0757751464844,
+229.74639892578125, 26.68379020690918, 108.94158935546875)), (b'person',
+0.7632826566696167, (106.59329223632812, 226.11199951171875,
+26.079158782958984, 100.47222137451172)), (b'person', 0.7058770060539246,
+(276.49200439453125, 189.14573669433594, 8.444928169250488,
+41.20795440673828)), (b'handbag', 0.5843681693077087, (97.74515533447266,
+226.93496704101562, 18.03496551513672, 24.689504623413086)), (b'umbrella',
+0.5733580589294434, (374.95709228515625, 163.89324951171875,
+25.796112060546875, 9.90929126739502)), (b'person', 0.5225788354873657,
+(153.6721954345703, 204.23947143554688, 8.81717300415039,
+52.854156494140625)), (b'person', 0.43799227476119995, (406.5743713378906,
+215.89390563964844, 15.703649520874023, 74.89576721191406)), (b'person',
+0.41168326139450073, (241.92977905273438, 194.4013671875, 10.230013847351074,
+47.96332550048828)), (b'person', 0.3753121793270111, (206.500732421875,
+182.40682983398438, 7.391855716705322, 32.68758010864258)), (b'person',
+0.32717615365982056, (122.51595306396484, 195.37823486328125,
+9.457942008972168, 36.52040481567383)), (b'person', 0.27769872546195984,
+(226.16036987304688, 187.29954528808594, 8.413454055786133,
+36.14714431762695)), (b'person', 0.27708911895751953, (286.1336669921875,
+187.1359100341797, 9.223457336425781, 45.986568450927734))]
+
+yep, here's the code:
+
+~res.append((nameTag, dets[j].prob[i], (b.x, b.y, b.w, b.h)))~
+
+and deep sort expects detections like:
+
+~def __init__(self, tlwh, confidence, feature):~
+
+where tlwh is bbox (x, y, w, h), confidence is confidence, and feature is
+array_like: "a feature vector that describes the object contained in this
+image"
+- darn how can i get that from darknet...
 
 ** Documentation for our version
 
