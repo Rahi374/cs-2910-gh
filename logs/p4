@@ -1,0 +1,736 @@
+ Used GPU 0 
+net.optimized_memory = 0 
+batch = 1, time_steps = 1, train = 0 
+
+ seen 64, trained: 32013 K-images (500 Kilo-batches_64) 
+
+ try to allocate additional workspace_size = 52.43 MB 
+ CUDA allocate done! 
+object names loaded 
+
+ Video size: [1920 x 1080]
+ t_write exit 
+ current_fps_det = 0, current_fps_cap = 0
+fps = 20	frame interval (ms) = 48	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 31	frame interval (ms) = 32	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 200	frame interval (ms) = 5	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 45	frame interval (ms) = 22	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 50	frame interval (ms) = 20	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 32	frame interval (ms) = 31	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 200	frame interval (ms) = 5	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 142	frame interval (ms) = 7	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 38	frame interval (ms) = 26	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 62	frame interval (ms) = 16	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 27	frame interval (ms) = 36	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 71	frame interval (ms) = 14	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 35	frame interval (ms) = 28	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 27	frame interval (ms) = 37	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 250	frame interval (ms) = 4	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 26	frame interval (ms) = 38	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 34	frame interval (ms) = 29	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 142	frame interval (ms) = 7	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 25	frame interval (ms) = 40	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 58	frame interval (ms) = 17	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 41	frame interval (ms) = 24	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 26	frame interval (ms) = 38	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 125	frame interval (ms) = 8	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 500	frame interval (ms) = 2	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 37	frame interval (ms) = 27	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 62	frame interval (ms) = 16	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 26	frame interval (ms) = 38	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 37	frame interval (ms) = 27	time frame in pipeline (ms) = 0
+ current_fps_det = 0, current_fps_cap = 0
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 250	frame interval (ms) = 4	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 32	frame interval (ms) = 31	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 35	frame interval (ms) = 28	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 83	frame interval (ms) = 12	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 31	frame interval (ms) = 32	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 27	frame interval (ms) = 36	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 250	frame interval (ms) = 4	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 250	frame interval (ms) = 4	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 37	frame interval (ms) = 27	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 27	frame interval (ms) = 36	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 58	frame interval (ms) = 17	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 37	frame interval (ms) = 27	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 22	frame interval (ms) = 44	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 333	frame interval (ms) = 3	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 34	frame interval (ms) = 29	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 166	frame interval (ms) = 6	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 27	frame interval (ms) = 36	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 25	frame interval (ms) = 40	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 500	frame interval (ms) = 2	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 40	frame interval (ms) = 25	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 40	frame interval (ms) = 25	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 34	frame interval (ms) = 29	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 71	frame interval (ms) = 14	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 32	frame interval (ms) = 31	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 100	frame interval (ms) = 10	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 31	frame interval (ms) = 32	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 23	frame interval (ms) = 42	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 333	frame interval (ms) = 3	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 32	frame interval (ms) = 31	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 27	frame interval (ms) = 36	time frame in pipeline (ms) = 0
+ current_fps_det = 14, current_fps_cap = 24
+fps = 125	frame interval (ms) = 8	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 100	frame interval (ms) = 10	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 37	frame interval (ms) = 27	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 31	frame interval (ms) = 32	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 24	frame interval (ms) = 41	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 500	frame interval (ms) = 2	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 142	frame interval (ms) = 7	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 27	frame interval (ms) = 36	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 38	frame interval (ms) = 26	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 24
+fps = 58	frame interval (ms) = 17	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 27	frame interval (ms) = 37	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 24
+fps = 35	frame interval (ms) = 28	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 200	frame interval (ms) = 5	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 24
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 35	frame interval (ms) = 28	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 24
+fps = 166	frame interval (ms) = 6	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 45	frame interval (ms) = 22	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 24
+fps = 47	frame interval (ms) = 21	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 83	frame interval (ms) = 12	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 24
+fps = 32	frame interval (ms) = 31	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 25	frame interval (ms) = 40	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 24
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 24
+fps = 125	frame interval (ms) = 8	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 27	frame interval (ms) = 36	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 47	frame interval (ms) = 21	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 24
+fps = 45	frame interval (ms) = 22	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 24
+fps = 27	frame interval (ms) = 37	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 90	frame interval (ms) = 11	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 32	frame interval (ms) = 31	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 71	frame interval (ms) = 14	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 45	frame interval (ms) = 22	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 45	frame interval (ms) = 22	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 200	frame interval (ms) = 5	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 26	frame interval (ms) = 38	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 24	frame interval (ms) = 41	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 100	frame interval (ms) = 10	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 58	frame interval (ms) = 17	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 58	frame interval (ms) = 17	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 31	frame interval (ms) = 32	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 142	frame interval (ms) = 7	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 142	frame interval (ms) = 7	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 27	frame interval (ms) = 37	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 71	frame interval (ms) = 14	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 47	frame interval (ms) = 21	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 32	frame interval (ms) = 31	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 111	frame interval (ms) = 9	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 24	frame interval (ms) = 41	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 76	frame interval (ms) = 13	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 34	frame interval (ms) = 29	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 43	frame interval (ms) = 23	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 76	frame interval (ms) = 13	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 1
+ current_fps_det = 13, current_fps_cap = 25
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 27	frame interval (ms) = 37	time frame in pipeline (ms) = 0
+ current_fps_det = 13, current_fps_cap = 25
+fps = 83	frame interval (ms) = 12	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 31	frame interval (ms) = 32	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 58	frame interval (ms) = 17	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 52	frame interval (ms) = 19	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 250	frame interval (ms) = 4	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 25	frame interval (ms) = 40	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 166	frame interval (ms) = 6	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 62	frame interval (ms) = 16	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 52	frame interval (ms) = 19	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 100	frame interval (ms) = 10	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 23	frame interval (ms) = 42	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 62	frame interval (ms) = 16	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 38	frame interval (ms) = 26	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 41	frame interval (ms) = 24	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 83	frame interval (ms) = 12	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 23	frame interval (ms) = 43	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 76	frame interval (ms) = 13	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 32	frame interval (ms) = 31	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 38	frame interval (ms) = 26	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 111	frame interval (ms) = 9	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 25	frame interval (ms) = 40	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 142	frame interval (ms) = 7	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 27	frame interval (ms) = 36	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 76	frame interval (ms) = 13	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 50	frame interval (ms) = 20	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 90	frame interval (ms) = 11	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 166	frame interval (ms) = 6	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 31	frame interval (ms) = 32	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 250	frame interval (ms) = 4	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 27	frame interval (ms) = 36	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 333	frame interval (ms) = 3	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 31	frame interval (ms) = 32	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 142	frame interval (ms) = 7	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 37	frame interval (ms) = 27	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 71	frame interval (ms) = 14	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 50	frame interval (ms) = 20	time frame in pipeline (ms) = 1
+ current_fps_det = 17, current_fps_cap = 24
+fps = 52	frame interval (ms) = 19	time frame in pipeline (ms) = 0
+ current_fps_det = 17, current_fps_cap = 24
+fps = 71	frame interval (ms) = 14	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 40	frame interval (ms) = 25	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 111	frame interval (ms) = 9	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 250	frame interval (ms) = 4	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 26	frame interval (ms) = 38	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 333	frame interval (ms) = 3	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 40	frame interval (ms) = 25	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 142	frame interval (ms) = 7	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 47	frame interval (ms) = 21	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 55	frame interval (ms) = 18	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 62	frame interval (ms) = 16	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 43	frame interval (ms) = 23	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 100	frame interval (ms) = 10	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 333	frame interval (ms) = 3	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 37	frame interval (ms) = 27	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 166	frame interval (ms) = 6	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 38	frame interval (ms) = 26	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 76	frame interval (ms) = 13	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 47	frame interval (ms) = 21	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 55	frame interval (ms) = 18	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 47	frame interval (ms) = 21	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 52	frame interval (ms) = 19	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 41	frame interval (ms) = 24	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 125	frame interval (ms) = 8	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 142	frame interval (ms) = 7	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 43	frame interval (ms) = 23	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 58	frame interval (ms) = 17	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 62	frame interval (ms) = 16	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 45	frame interval (ms) = 22	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 90	frame interval (ms) = 11	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 32	frame interval (ms) = 31	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 32	frame interval (ms) = 31	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 200	frame interval (ms) = 5	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 43	frame interval (ms) = 23	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 52	frame interval (ms) = 19	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 50	frame interval (ms) = 20	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 71	frame interval (ms) = 14	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 38	frame interval (ms) = 26	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 83	frame interval (ms) = 12	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 38	frame interval (ms) = 26	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 111	frame interval (ms) = 9	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 142	frame interval (ms) = 7	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 1
+ current_fps_det = 21, current_fps_cap = 24
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 21, current_fps_cap = 24
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 29	frame interval (ms) = 34	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 333	frame interval (ms) = 3	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 166	frame interval (ms) = 6	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 35	frame interval (ms) = 28	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 90	frame interval (ms) = 11	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 43	frame interval (ms) = 23	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 62	frame interval (ms) = 16	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 50	frame interval (ms) = 20	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 52	frame interval (ms) = 19	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 55	frame interval (ms) = 18	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 47	frame interval (ms) = 21	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 71	frame interval (ms) = 14	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 40	frame interval (ms) = 25	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 111	frame interval (ms) = 9	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 166	frame interval (ms) = 6	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 250	frame interval (ms) = 4	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 27	frame interval (ms) = 36	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 28	frame interval (ms) = 35	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 200	frame interval (ms) = 5	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 125	frame interval (ms) = 8	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 35	frame interval (ms) = 28	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 90	frame interval (ms) = 11	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 37	frame interval (ms) = 27	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 83	frame interval (ms) = 12	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 38	frame interval (ms) = 26	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 76	frame interval (ms) = 13	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 41	frame interval (ms) = 24	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 45	frame interval (ms) = 22	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 58	frame interval (ms) = 17	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 47	frame interval (ms) = 21	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 55	frame interval (ms) = 18	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 52	frame interval (ms) = 19	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 50	frame interval (ms) = 20	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 55	frame interval (ms) = 18	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 45	frame interval (ms) = 22	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 41	frame interval (ms) = 24	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 76	frame interval (ms) = 13	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 41	frame interval (ms) = 24	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 83	frame interval (ms) = 12	time frame in pipeline (ms) = 1
+ current_fps_det = 29, current_fps_cap = 25
+fps = 37	frame interval (ms) = 27	time frame in pipeline (ms) = 0
+ current_fps_det = 29, current_fps_cap = 25
+fps = 90	frame interval (ms) = 11	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 35	frame interval (ms) = 28	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 111	frame interval (ms) = 9	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 32	frame interval (ms) = 31	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 166	frame interval (ms) = 6	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 200	frame interval (ms) = 5	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 25	frame interval (ms) = 39	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 333	frame interval (ms) = 3	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 25	frame interval (ms) = 40	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 250	frame interval (ms) = 4	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 35	frame interval (ms) = 28	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 1000	frame interval (ms) = 1	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 30	frame interval (ms) = 33	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 100	frame interval (ms) = 10	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 40	frame interval (ms) = 25	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 100	frame interval (ms) = 10	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 41	frame interval (ms) = 24	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 52	frame interval (ms) = 19	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 50	frame interval (ms) = 20	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 76	frame interval (ms) = 13	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 38	frame interval (ms) = 26	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 76	frame interval (ms) = 13	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 38	frame interval (ms) = 26	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 111	frame interval (ms) = 9	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 33	frame interval (ms) = 30	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 125	frame interval (ms) = 8	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 31	frame interval (ms) = 32	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 250	frame interval (ms) = 4	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 41	frame interval (ms) = 24	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 111	frame interval (ms) = 9	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 40	frame interval (ms) = 25	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 71	frame interval (ms) = 14	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 83	frame interval (ms) = 12	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 50	frame interval (ms) = 20	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 166	frame interval (ms) = 6	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 76	frame interval (ms) = 13	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 45	frame interval (ms) = 22	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 500	frame interval (ms) = 2	time frame in pipeline (ms) = 0
+ current_fps_det = 26, current_fps_cap = 24
+fps = 66	frame interval (ms) = 15	time frame in pipeline (ms) = 1
+ current_fps_det = 26, current_fps_cap = 24
+fps = 41	frame interval (ms) = 24	time frame in pipeline (ms) = 1

@@ -1,0 +1,198 @@
+==39795== NVPROF is profiling process 39795, command: ./uselib ../../MOT17-02-DPM.mp4
+   layer   filters  size/strd(dil)      input                output
+   0 ==39795== Warning: Profiling results might be incorrect with current version of nvcc compiler used to compile cuda app. Compile with nvcc compiler 9.0 or later version to get correct profiling results. Ignore this warning if code is already compiled with the recommended nvcc version 
+conv     32       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  32 0.299 BF
+   1 conv     64       3 x 3/ 2    416 x 416 x  32 ->  208 x 208 x  64 1.595 BF
+   2 conv     32       1 x 1/ 1    208 x 208 x  64 ->  208 x 208 x  32 0.177 BF
+   3 conv     64       3 x 3/ 1    208 x 208 x  32 ->  208 x 208 x  64 1.595 BF
+   4 Shortcut Layer: 1,  wt = 0, wn = 0, outputs: 208 x 208 x  64 0.003 BF
+   5 conv    128       3 x 3/ 2    208 x 208 x  64 ->  104 x 104 x 128 1.595 BF
+   6 conv     64       1 x 1/ 1    104 x 104 x 128 ->  104 x 104 x  64 0.177 BF
+   7 conv    128       3 x 3/ 1    104 x 104 x  64 ->  104 x 104 x 128 1.595 BF
+   8 Shortcut Layer: 5,  wt = 0, wn = 0, outputs: 104 x 104 x 128 0.001 BF
+   9 conv     64       1 x 1/ 1    104 x 104 x 128 ->  104 x 104 x  64 0.177 BF
+  10 conv    128       3 x 3/ 1    104 x 104 x  64 ->  104 x 104 x 128 1.595 BF
+  11 Shortcut Layer: 8,  wt = 0, wn = 0, outputs: 104 x 104 x 128 0.001 BF
+  12 conv    256       3 x 3/ 2    104 x 104 x 128 ->   52 x  52 x 256 1.595 BF
+  13 conv    128       1 x 1/ 1     52 x  52 x 256 ->   52 x  52 x 128 0.177 BF
+  14 conv    256       3 x 3/ 1     52 x  52 x 128 ->   52 x  52 x 256 1.595 BF
+  15 Shortcut Layer: 12,  wt = 0, wn = 0, outputs:  52 x  52 x 256 0.001 BF
+  16 conv    128       1 x 1/ 1     52 x  52 x 256 ->   52 x  52 x 128 0.177 BF
+  17 conv    256       3 x 3/ 1     52 x  52 x 128 ->   52 x  52 x 256 1.595 BF
+  18 Shortcut Layer: 15,  wt = 0, wn = 0, outputs:  52 x  52 x 256 0.001 BF
+  19 conv    128       1 x 1/ 1     52 x  52 x 256 ->   52 x  52 x 128 0.177 BF
+  20 conv    256       3 x 3/ 1     52 x  52 x 128 ->   52 x  52 x 256 1.595 BF
+  21 Shortcut Layer: 18,  wt = 0, wn = 0, outputs:  52 x  52 x 256 0.001 BF
+  22 conv    128       1 x 1/ 1     52 x  52 x 256 ->   52 x  52 x 128 0.177 BF
+  23 conv    256       3 x 3/ 1     52 x  52 x 128 ->   52 x  52 x 256 1.595 BF
+  24 Shortcut Layer: 21,  wt = 0, wn = 0, outputs:  52 x  52 x 256 0.001 BF
+  25 conv    128       1 x 1/ 1     52 x  52 x 256 ->   52 x  52 x 128 0.177 BF
+  26 conv    256       3 x 3/ 1     52 x  52 x 128 ->   52 x  52 x 256 1.595 BF
+  27 Shortcut Layer: 24,  wt = 0, wn = 0, outputs:  52 x  52 x 256 0.001 BF
+  28 conv    128       1 x 1/ 1     52 x  52 x 256 ->   52 x  52 x 128 0.177 BF
+  29 conv    256       3 x 3/ 1     52 x  52 x 128 ->   52 x  52 x 256 1.595 BF
+  30 Shortcut Layer: 27,  wt = 0, wn = 0, outputs:  52 x  52 x 256 0.001 BF
+  31 conv    128       1 x 1/ 1     52 x  52 x 256 ->   52 x  52 x 128 0.177 BF
+  32 conv    256       3 x 3/ 1     52 x  52 x 128 ->   52 x  52 x 256 1.595 BF
+  33 Shortcut Layer: 30,  wt = 0, wn = 0, outputs:  52 x  52 x 256 0.001 BF
+  34 conv    128       1 x 1/ 1     52 x  52 x 256 ->   52 x  52 x 128 0.177 BF
+  35 conv    256       3 x 3/ 1     52 x  52 x 128 ->   52 x  52 x 256 1.595 BF
+  36 Shortcut Layer: 33,  wt = 0, wn = 0, outputs:  52 x  52 x 256 0.001 BF
+  37 conv    512       3 x 3/ 2     52 x  52 x 256 ->   26 x  26 x 512 1.595 BF
+  38 conv    256       1 x 1/ 1     26 x  26 x 512 ->   26 x  26 x 256 0.177 BF
+  39 conv    512       3 x 3/ 1     26 x  26 x 256 ->   26 x  26 x 512 1.595 BF
+  40 Shortcut Layer: 37,  wt = 0, wn = 0, outputs:  26 x  26 x 512 0.000 BF
+  41 conv    256       1 x 1/ 1     26 x  26 x 512 ->   26 x  26 x 256 0.177 BF
+  42 conv    512       3 x 3/ 1     26 x  26 x 256 ->   26 x  26 x 512 1.595 BF
+  43 Shortcut Layer: 40,  wt = 0, wn = 0, outputs:  26 x  26 x 512 0.000 BF
+  44 conv    256       1 x 1/ 1     26 x  26 x 512 ->   26 x  26 x 256 0.177 BF
+  45 conv    512       3 x 3/ 1     26 x  26 x 256 ->   26 x  26 x 512 1.595 BF
+  46 Shortcut Layer: 43,  wt = 0, wn = 0, outputs:  26 x  26 x 512 0.000 BF
+  47 conv    256       1 x 1/ 1     26 x  26 x 512 ->   26 x  26 x 256 0.177 BF
+  48 conv    512       3 x 3/ 1     26 x  26 x 256 ->   26 x  26 x 512 1.595 BF
+  49 Shortcut Layer: 46,  wt = 0, wn = 0, outputs:  26 x  26 x 512 0.000 BF
+  50 conv    256       1 x 1/ 1     26 x  26 x 512 ->   26 x  26 x 256 0.177 BF
+  51 conv    512       3 x 3/ 1     26 x  26 x 256 ->   26 x  26 x 512 1.595 BF
+  52 Shortcut Layer: 49,  wt = 0, wn = 0, outputs:  26 x  26 x 512 0.000 BF
+  53 conv    256       1 x 1/ 1     26 x  26 x 512 ->   26 x  26 x 256 0.177 BF
+  54 conv    512       3 x 3/ 1     26 x  26 x 256 ->   26 x  26 x 512 1.595 BF
+  55 Shortcut Layer: 52,  wt = 0, wn = 0, outputs:  26 x  26 x 512 0.000 BF
+  56 conv    256       1 x 1/ 1     26 x  26 x 512 ->   26 x  26 x 256 0.177 BF
+  57 conv    512       3 x 3/ 1     26 x  26 x 256 ->   26 x  26 x 512 1.595 BF
+  58 Shortcut Layer: 55,  wt = 0, wn = 0, outputs:  26 x  26 x 512 0.000 BF
+  59 conv    256       1 x 1/ 1     26 x  26 x 512 ->   26 x  26 x 256 0.177 BF
+  60 conv    512       3 x 3/ 1     26 x  26 x 256 ->   26 x  26 x 512 1.595 BF
+  61 Shortcut Layer: 58,  wt = 0, wn = 0, outputs:  26 x  26 x 512 0.000 BF
+  62 conv   1024       3 x 3/ 2     26 x  26 x 512 ->   13 x  13 x1024 1.595 BF
+  63 conv    512       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 512 0.177 BF
+  64 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  65 Shortcut Layer: 62,  wt = 0, wn = 0, outputs:  13 x  13 x1024 0.000 BF
+  66 conv    512       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 512 0.177 BF
+  67 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  68 Shortcut Layer: 65,  wt = 0, wn = 0, outputs:  13 x  13 x1024 0.000 BF
+  69 conv    512       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 512 0.177 BF
+  70 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  71 Shortcut Layer: 68,  wt = 0, wn = 0, outputs:  13 x  13 x1024 0.000 BF
+  72 conv    512       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 512 0.177 BF
+  73 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  74 Shortcut Layer: 71,  wt = 0, wn = 0, outputs:  13 x  13 x1024 0.000 BF
+  75 conv    512       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 512 0.177 BF
+  76 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  77 conv    512       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 512 0.177 BF
+  78 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  79 conv    512       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 512 0.177 BF
+  80 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  81 conv    255       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 255 0.088 BF
+  82 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, cls_norm: 1.00, scale_x_y: 1.00
+  83 route  79 		                           ->   13 x  13 x 512 
+  84 conv    256       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 256 0.044 BF
+  85 upsample                 2x    13 x  13 x 256 ->   26 x  26 x 256
+  86 route  85 61 	                           ->   26 x  26 x 768 
+  87 conv    256       1 x 1/ 1     26 x  26 x 768 ->   26 x  26 x 256 0.266 BF
+  88 conv    512       3 x 3/ 1     26 x  26 x 256 ->   26 x  26 x 512 1.595 BF
+  89 conv    256       1 x 1/ 1     26 x  26 x 512 ->   26 x  26 x 256 0.177 BF
+  90 conv    512       3 x 3/ 1     26 x  26 x 256 ->   26 x  26 x 512 1.595 BF
+  91 conv    256       1 x 1/ 1     26 x  26 x 512 ->   26 x  26 x 256 0.177 BF
+  92 conv    512       3 x 3/ 1     26 x  26 x 256 ->   26 x  26 x 512 1.595 BF
+  93 conv    255       1 x 1/ 1     26 x  26 x 512 ->   26 x  26 x 255 0.177 BF
+  94 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, cls_norm: 1.00, scale_x_y: 1.00
+  95 route  91 		                           ->   26 x  26 x 256 
+  96 conv    128       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 128 0.044 BF
+  97 upsample                 2x    26 x  26 x 128 ->   52 x  52 x 128
+  98 route  97 36 	                           ->   52 x  52 x 384 
+  99 conv    128       1 x 1/ 1     52 x  52 x 384 ->   52 x  52 x 128 0.266 BF
+ 100 conv    256       3 x 3/ 1     52 x  52 x 128 ->   52 x  52 x 256 1.595 BF
+ 101 conv    128       1 x 1/ 1     52 x  52 x 256 ->   52 x  52 x 128 0.177 BF
+ 102 conv    256       3 x 3/ 1     52 x  52 x 128 ->   52 x  52 x 256 1.595 BF
+ 103 conv    128       1 x 1/ 1     52 x  52 x 256 ->   52 x  52 x 128 0.177 BF
+ 104 conv    256       3 x 3/ 1     52 x  52 x 128 ->   52 x  52 x 256 1.595 BF
+ 105 conv    255       1 x 1/ 1     52 x  52 x 256 ->   52 x  52 x 255 0.353 BF
+ 106 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, cls_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 65.879 
+avg_outputs = 532444 
+ Allocate additional workspace_size = 52.43 MB 
+Loading weights from yolov3.weights... Used GPU 0 
+net.optimized_memory = 0 
+batch = 1, time_steps = 1, train = 0 
+Done! Loaded 107 layers from weights-file 
+
+ seen 64, trained: 32013 K-images (500 Kilo-batches_64) 
+
+ try to allocate additional workspace_size = 52.43 MB 
+ CUDA allocate done! 
+object names loaded 
+input image or video filename: [ WARN:0] global /usr/local/contrib/opencv/src/modules/videoio/src/cap_gstreamer.cpp (898) open OpenCV | GStreamer warning: unable to query duration of stream
+[ WARN:0] global /usr/local/contrib/opencv/src/modules/videoio/src/cap_gstreamer.cpp (935) open OpenCV | GStreamer warning: Cannot query video position: status=1, value=0, duration=-1
+
+ Video size: [960 x 540]
+ t_write exit 
+ t_network exit 
+ exit_flag: detection_data.cap_frame.size = [0 x 0]
+ t_cap exit 
+ t_prepare exit 
+ t_detect exit 
+ t_draw exit 
+ show detection exit 
+==39795== Profiling application: ./uselib ../../MOT17-02-DPM.mp4
+==39795== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   38.29%  3.89062s     19200  202.64us  153.70us  290.72us  maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt
+                   14.62%  1.48516s     14400  103.14us  68.799us  149.12us  maxwell_scudnn_128x128_relu_interior_nn
+                    7.71%  783.69ms     19200  40.817us  3.4880us  135.74us  void cudnn::winograd::generateWinogradTilesKernel<int=0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)
+                    6.37%  647.24ms     45000  14.383us  2.5270us  142.53us  add_bias_kernel(float*, float*, int, int, int, int)
+                    5.59%  567.79ms      4200  135.19us  129.38us  153.38us  void cudnn::detail::implicit_convolve_sgemm<float, float, int=1024, int=5, int=5, int=3, int=3, int=3, int=1, bool=1, bool=0, bool=1>(int, int, int, float const *, int, float*, cudnn::detail::implicit_convolve_sgemm<float, float, int=1024, int=5, int=5, int=3, int=3, int=3, int=1, bool=1, bool=0, bool=1>*, kernel_conv_params, int, float, float, int, float, float, int, int)
+                    3.92%  398.45ms      1800  221.36us  86.688us  319.77us  void cudnn::detail::explicit_convolve_sgemm<float, int, int=128, int=5, int=5, int=3, int=3, int=3, int=0, bool=1>(int, int, int, float const *, int, float const , int, cudnn::detail::explicit_convolve_sgemm<float, int, int=128, int=5, int=5, int=3, int=3, int=3, int=0, bool=1>*, kernel_conv_params, int, int, float, float, int, float const *, float const *)
+                    3.20%  325.22ms     43200  7.5280us  1.4710us  87.199us  activate_array_leaky_kernel(float*, int)
+                    3.02%  306.63ms      1518  202.00us     896ns  8.5614ms  [CUDA memcpy HtoD]
+                    2.89%  293.84ms      2401  122.38us  13.983us  234.53us  [CUDA memcpy DtoH]
+                    2.55%  258.92ms     13800  18.762us  5.5360us  79.775us  shortcut_singlelayer_simple_kernel(int, int, int, int, int*, float**, float*, float*, float*, int, WEIGHTS_NORMALIZATION_T)
+                    2.45%  249.20ms       600  415.33us  404.57us  443.00us  void cudnn::detail::explicit_convolve_sgemm<float, int, int=1024, int=5, int=5, int=3, int=3, int=3, int=0, bool=1>(int, int, int, float const *, int, float const , int, cudnn::detail::explicit_convolve_sgemm<float, int, int=1024, int=5, int=5, int=3, int=3, int=3, int=0, bool=1>*, kernel_conv_params, int, int, float, float, int, float const *, float const *)
+                    2.06%  209.74ms      2400  87.392us  69.792us  108.64us  void im2col4d_kernel<float, int>(im2col4d_params, cudnnConvolutionStruct, cudnnTensor4dStruct, float const *, float*, int)
+                    1.63%  165.24ms       600  275.40us  262.75us  308.32us  maxwell_scudnn_128x64_relu_small_nn
+                    1.62%  164.93ms       600  274.89us  266.81us  301.12us  maxwell_scudnn_128x128_relu_small_nn
+                    1.39%  141.30ms      1200  117.75us  91.519us  153.79us  void cudnn::detail::implicit_convolve_sgemm<float, float, int=128, int=5, int=5, int=3, int=3, int=3, int=1, bool=1, bool=0, bool=1>(int, int, int, float const *, int, float*, cudnn::detail::implicit_convolve_sgemm<float, float, int=128, int=5, int=5, int=3, int=3, int=3, int=1, bool=1, bool=0, bool=1>*, kernel_conv_params, int, float, float, int, float, float, int, int)
+                    0.65%  66.443ms      1200  55.369us  50.847us  62.559us  maxwell_scudnn_128x64_relu_interior_nn
+                    0.60%  60.805ms       600  101.34us  98.207us  112.22us  maxwell_scudnn_128x32_relu_small_nn
+                    0.34%  34.517ms     18000  1.9170us  1.3760us  13.184us  cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams)
+                    0.33%  33.043ms       600  55.071us  53.119us  60.927us  maxwell_scudnn_128x32_relu_interior_nn
+                    0.27%  27.104ms      5400  5.0190us  1.6640us  12.544us  simple_copy_kernel(int, float*, float*)
+                    0.24%  24.843ms     10800  2.3000us  1.4400us  6.1440us  activate_array_logistic_kernel(float*, int)
+                    0.21%  21.608ms      1200  18.006us  12.512us  24.928us  upsample_kernel(unsigned long, float*, int, int, int, int, int, int, float, float*)
+                    0.04%  4.0342ms      1200  3.3610us  2.2080us  4.5440us  fill_kernel(int, float, float*, int)
+                    0.00%  6.3360us         4  1.5840us  1.3120us  2.0800us  [CUDA memset]
+      API calls:   61.96%  7.16193s       601  11.917ms  213.87us  14.136ms  cudaStreamSynchronize
+                   15.45%  1.78543s    205200  8.7000us  5.2330us  3.3679ms  cudaLaunchKernel
+                   14.80%  1.71096s         8  213.87ms  1.8920us  1.71067s  cudaStreamCreateWithFlags
+                    2.74%  316.86ms      3918  80.872us  3.0560us  8.9775ms  cudaMemcpyAsync
+                    2.55%  295.27ms       561  526.33us  2.4920us  269.07ms  cudaMalloc
+                    0.81%  93.076ms    172226     540ns     272ns  1.2571ms  cudaGetDevice
+                    0.74%  85.352ms    440191     193ns     104ns  1.1409ms  cudaGetLastError
+                    0.29%  33.437ms     10200  3.2780us  1.3110us  121.71us  cudaBindTexture
+                    0.28%  32.226ms       554  58.168us     444ns  1.9007ms  cudaFree
+                    0.22%  25.995ms    122547     212ns     108ns  712.92us  cudaPeekAtLastError
+                    0.07%  8.3818ms     10200     821ns     440ns  20.282us  cudaUnbindTexture
+                    0.05%  5.4296ms         8  678.71us  21.092us  1.4987ms  cudaHostAlloc
+                    0.02%  2.1079ms         7  301.13us  8.4820us  765.98us  cudaFreeHost
+                    0.01%  937.40us         2  468.70us  464.95us  472.45us  cuDeviceTotalMem
+                    0.01%  876.01us       191  4.5860us     139ns  184.54us  cuDeviceGetAttribute
+                    0.00%  133.10us         2  66.549us  43.521us  89.578us  cuDeviceGetName
+                    0.00%  36.120us         4  9.0300us  3.3520us  24.626us  cudaMemsetAsync
+                    0.00%  32.457us        28  1.1590us     450ns  12.608us  cudaEventCreateWithFlags
+                    0.00%  28.886us         2  14.443us  12.408us  16.478us  cudaStreamCreate
+                    0.00%  26.619us         1  26.619us  26.619us  26.619us  cudaMemcpy
+                    0.00%  18.052us         6  3.0080us  1.6430us  7.4540us  cudaSetDevice
+                    0.00%  17.008us        29     586ns     296ns  5.7690us  cudaDeviceGetAttribute
+                    0.00%  12.238us         4  3.0590us  2.0630us  3.7500us  cudaStreamCreateWithPriority
+                    0.00%  6.6840us         1  6.6840us  6.6840us  6.6840us  cudaEventRecord
+                    0.00%  5.8660us         1  5.8660us  5.8660us  5.8660us  cudaDeviceGetStreamPriorityRange
+                    0.00%  5.1670us         1  5.1670us  5.1670us  5.1670us  cuDeviceGetPCIBusId
+                    0.00%  3.1050us         3  1.0350us     231ns  2.3670us  cuDeviceGet
+                    0.00%  2.4890us         4     622ns     151ns  1.6820us  cuDeviceGetCount
+                    0.00%  2.3670us         1  2.3670us  2.3670us  2.3670us  cudaGetDeviceCount
+                    0.00%  2.3630us         1  2.3630us  2.3630us  2.3630us  cudaHostGetDevicePointer
+                    0.00%     915ns         1     915ns     915ns     915ns  cuInit
+                    0.00%     743ns         2     371ns     293ns     450ns  cuDeviceGetUuid
+                    0.00%     478ns         1     478ns     478ns     478ns  cuDriverGetVersion
