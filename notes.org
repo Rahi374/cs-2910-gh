@@ -461,6 +461,17 @@ array_like: "a feature vector that describes the object contained in this
 image"
 - darn how can i get that from darknet...
 
+** back to new darknet
+
+okay looks like we only have opencv; no zed and stuff
+
+okay so the original yolo_console_dll had a single buffer between the stages
+- i chagned the queue and now we're monitoring it every 10ms, but only one
+  buffer is being used...
+- except for when we turn on image display, then that buffer is the bottlneck
+- when we turn off display we have a flat 15 fps
+  - the original video is 25 fps
+
 ** Documentation for our version
 
 gpu is required
