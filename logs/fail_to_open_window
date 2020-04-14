@@ -1,0 +1,14 @@
+ try to allocate additional workspace_size = 52.43 MB 
+ CUDA allocate done! 
+object names loaded 
+OUTPUT VIDEO FILE IS result_MOT20-01.mp4.avi
+[ WARN:0] global /usr/local/contrib/opencv/src/modules/videoio/src/cap_gstreamer.cpp (898) open OpenCV | GStreamer warning: unable to query duration of stream
+[ WARN:0] global /usr/local/contrib/opencv/src/modules/videoio/src/cap_gstreamer.cpp (935) open OpenCV | GStreamer warning: Cannot query video position: status=1, value=0, duration=-1
+
+ Video size: [1920 x 1080]
+ t_write exit 
+ show detection exit 
+terminate called after throwing an instance of 'cv::Exception'
+  what():  OpenCV(4.2.0-dev) /usr/local/contrib/opencv/src/modules/highgui/src/window_gtk.cpp:1260: error: (-215:Assertion failed) found && "Can't destroy non-registered window" in function 'cvDestroyWindow'
+
+zsh: abort (core dumped)  LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH ./uselib -s ../../download/MOT20-01.mp4
