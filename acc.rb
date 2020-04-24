@@ -113,7 +113,6 @@ def load_dets_from_stdin type
     dets = STDIN.readlines.find_all{|s| s.match "^Entry"}.map{|s| Detection.new(type, s)}
     return reorganize_dets(dets)
 end
-
 options = {}
 OptionParser.new do |opts|
     opts.banner = "Usage: acc.rb [options] ground_truth_detections predicted_detections"
@@ -150,6 +149,8 @@ pred_dets = pred_dets_fn ?
 motps = (1..(gt_dets.length-1)).to_a.map do |frame|
     frame_gt_dets = gt_dets[frame]
     frame_pred_dets = pred_dets[frame]
+    if frame_gt_dets.nil? then next nil end
+    if frame_pred_dets.nil? then next 0 end
 
     for gt_det in frame_gt_dets
         for pred_det in frame_pred_dets
@@ -177,4 +178,4 @@ end
 if options[:print_all_matches]
            puts motps.inspect
 end
-puts motps.sum / motps.length.to_f
+puts motps.sum / motps.find_all{|x| not x.nil?}.length.to_f
