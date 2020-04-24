@@ -1,6 +1,8 @@
 require "optparse"
 require "parallel"
 
+ENTRY_REGEX = "^Entry f [0-9]+ [A-Za-z ]+ - "
+
 class DetMatch
     include Comparable
     attr_accessor :iou, :gt_det, :pred_det
@@ -100,7 +102,7 @@ end
 def load_dets_from_file filename, type
     f = File.open(filename)
     if type == :pred
-        dets = f.readlines.find_all{|s| s.match "^Entry"}.map{|s| Detection.new(type, s)}
+        dets = f.readlines.find_all{|s| s.match ENTRY_REGEX}.map{|s| Detection.new(type, s)}
     elsif type == :gt
         dets = f.readlines.map{|s| Detection.new(type, s)}
     end
@@ -110,7 +112,7 @@ def load_dets_from_file filename, type
 end
 
 def load_dets_from_stdin type
-    dets = STDIN.readlines.find_all{|s| s.match "^Entry"}.map{|s| Detection.new(type, s)}
+    dets = STDIN.readlines.find_all{|s| s.match ENTRY_REGEX}.map{|s| Detection.new(type, s)}
     return reorganize_dets(dets)
 end
 options = {}
