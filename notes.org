@@ -515,3 +515,322 @@ where does buff_letter come from? it is predicted from the last frame in
 ~src/network.c:network_predict()~:
 - ~forward_network()~ -> ~forward_network_gpu()~
   - cuda stuff
+
+* new stuff
+
+nvprof result (baseline)
+#+BEGIN_SRC nvprof
+==187085== Profiling application: ./uselib -o ../../download/MOT20-01.mp4
+==187085== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   35.20%  2.55320s     13696  186.42us  140.16us  270.56us  maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt
+                   13. 91%  1.00909s     10272  98.236us  63.359us  138.37us  maxwell_scudnn_128x128_relu_interior_nn
+                    8.33%  604.23ms      2996  201.68us  198.97us  230.24us  void cudnn::detail::implicit_convolve_sgemm<float, float, int=1024, int=5, int=5, int=3, int=3, int=3, int=1, bool=1, bool=0, bool=1>(int, int, int, float const *, int, float*, cudnn::detail::implicit_convolve_sgemm<float, float, int=1024, int=5, int=5, int=3, int=3, int=3, int=1, bool=1, bool=0, bool=1>*, kernel_conv_params, int, float, float, int, float, float, int, int)
+                    7.77%  563.33ms     13696  41.131us  3.5840us  136.99us  void cudnn::winograd::generateWinogradTilesKernel<int=0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)
+                    6.23%  451.78ms     32100  14.074us  2.5280us  142.49us  add_bias_kernel(float*, float*, int, int, int, int)
+                    4.20%  304.53ms      1284  237.17us  113.47us  335.45us  void cudnn::detail::explicit_convolve_sgemm<float, int, int=128, int=5, int=5, int=3, int=3, int=3, int=0, bool=1>(int, int, int, float const *, int, float const , int, cudnn::detail::explicit_convolve_sgemm<float, int, int=128, int=5, int=5, int=3, int=3, int=3, int=0, bool=1>*, kernel_conv_params, int, int, float, float, int, float const *, float const *)
+                    3.30%  239.37ms       428  559.29us  557.37us  573.56us  void cudnn::detail::explicit_convolve_sgemm<float, int, int=1024, int=5, int=5, int=3, int=3, int=3, int=0, bool=1>(int, int, int, float const *, int, float const , int, cudnn::detail::explicit_convolve_sgemm<float, int, int=1024, int=5, int=5, int=3, int=3, int=3, int=0, bool=1>*, kernel_conv_params, int, int, float, float, int, float const *, float const *)
+                    3.15%  228.72ms     30816  7.4220us  1.4710us  87.232us  activate_array_leaky_kernel(float*, int)
+                    3.00%  217.84ms      1346  161.84us     960ns  8.9544ms  [CUDA memcpy HtoD]
+                    2.90%  210.37ms      1713  122.81us  14.016us  225.28us  [CUDA memcpy DtoH]
+                    2.51%  182.38ms      9844  18.526us  5.5040us  80.032us  shortcut_singlelayer_simple_kernel(int, int, int, int, int*, float**, float*, float*, float*, int, WEIGHTS_NORMALIZATION_T)
+                    2.06%  149.40ms      1712  87.264us  70.976us  110.66us  void im2col4d_kernel<float, int>(im2col4d_params, cudnnConvolutionStruct, cudnnTensor4dStruct, float const *, float*, int)
+                    1.88%  136.07ms       856  158.96us  125.15us  193.92us  void cudnn::detail::implicit_convolve_sgemm<float, float, int=128, int=5, int=5, int=3, int=3, int=3, int=1, bool=1, bool=0, bool=1>(int, int, int, float const *, int, float*, cudnn::detail::implicit_convolve_sgemm<float, float, int=128, int=5, int=5, int=3, int=3, int=3, int=1, bool=1, bool=0, bool=1>*, kernel_conv_params, int, float, float, int, float, float, int, int)
+                    1.55%  112.78ms       428  263.49us  252.86us  293.02us  maxwell_scudnn_128x64_relu_small_nn
+                    1.53%  110.68ms       428  258.59us  257.12us  291.97us  maxwell_scudnn_128x128_relu_small_nn
+                    0.56%  40.970ms       856  47.861us  44.031us  55.839us  maxwell_scudnn_128x64_relu_interior_nn
+                    0.55%  39.704ms       428  92.766us  91.103us  101.47us  maxwell_scudnn_128x32_relu_small_nn
+                    0.32%  23.537ms     12840  1.8330us  1.3760us  7.3920us  cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams)
+                    0.30%  21.840ms       428  51.028us  49.311us  54.559us  maxwell_scudnn_128x32_relu_interior_nn
+                    0.27%  19.316ms      3852  5.0140us  1.6960us  12.352us  simple_copy_kernel(int, float*, float*)
+                    0.24%  17.277ms      7704  2.2420us  1.4400us  6.0480us  activate_array_logistic_kernel(float*, int)
+                    0.21%  14.946ms       856  17.459us  12.384us  24.767us  upsample_kernel(unsigned long, float*, int, int, int, int, int, int, float, float*)
+                    0.04%  2.8648ms       856  3.3460us  2.4000us  4.4800us  fill_kernel(int, float, float*, int)
+                    0.00%  6.2400us         4  1.5600us  1.3440us  2.1760us  [CUDA memset]
+      API calls:   58.33%  5.37562s       429  12.531ms  215.07us  13.415ms  cudaStreamSynchronize
+                   20.72%  1.90914s         8  238.64ms  2.1460us  1.90881s  cudaStreamCreateWithFlags
+                   12. 48%  1.15036s    146376  7.8580us  6.2530us  725.65us  cudaLaunchKernel
+                    3.99%  367.77ms       561  655.55us  2.7940us  340.63ms  cudaMalloc
+                    2.42%  223.16ms      3058  72.976us  4.3870us  9.3669ms  cudaMemcpyAsync
+                    0.59%  54.379ms    123378     440ns     273ns  652.03us  cudaGetDevice
+                    0.57%  52.427ms    315148     166ns     104ns  714.73us  cudaGetLastError
+                    0.36%  33.271ms       552  60.274us     747ns  1.9029ms  cudaFree
+                    0.20%  18.802ms      7276  2.5840us  1.3250us  27.589us  cudaBindTexture
+                    0.17%  15.695ms     87459     179ns     107ns  638.04us  cudaPeekAtLastError
+                    0.06%  5.5829ms         8  697.87us  24.149us  1.6312ms  cudaHostAlloc
+                    0.05%  5.0491ms      7276     693ns     429ns  9.2750us  cudaUnbindTexture
+                    0.02%  2.0369ms         7  290.99us  10.961us  763.91us  cudaFreeHost
+                    0.01%  891.00us         2  445.50us  431.86us  459.14us  cuDeviceTotalMem
+                    0.01%  871.39us       190  4.5860us     129ns  187.48us  cuDeviceGetAttribute
+                    0.01%  473.02us         1  473.02us  473.02us  473.02us  cudaGetDeviceProperties
+                    0.00%  83.855us         2  41.927us  35.906us  47.949us  cuDeviceGetName
+                    0.00%  61.639us         4  15.409us  10.258us  27.706us  cudaMemsetAsync
+                    0.00%  33.742us         2  16.871us  16.068us  17.674us  cudaStreamCreate
+                    0.00%  31.059us         1  31.059us  31.059us  31.059us  cudaMemcpy
+                    0.00%  26.148us        28     933ns     441ns  9.9830us  cudaEventCreateWithFlags
+                    0.00%  16.408us         6  2.7340us  1.6040us  6.2550us  cudaSetDevice
+                    0.00%  14.876us         4  3.7190us  2.0160us  6.5090us  cudaStreamCreateWithPriority
+                    0.00%  12.828us        29     442ns     283ns  2.7970us  cudaDeviceGetAttribute
+                    0.00%  10.314us         1  10.314us  10.314us  10.314us  cudaDeviceGetStreamPriorityRange
+                    0.00%  10.014us         1  10.014us  10.014us  10.014us  cudaEventRecord
+                    0.00%  5.8650us         1  5.8650us  5.8650us  5.8650us  cuDeviceGetPCIBusId
+                    0.00%  4.2490us         1  4.2490us  4.2490us  4.2490us  cudaHostGetDevicePointer
+                    0.00%  3.0750us         3  1.0250us     190ns  2.4340us  cuDeviceGet
+                    0.00%  2.5630us         1  2.5630us  2.5630us  2.5630us  cudaGetDeviceCount
+                    0.00%  1.6620us         4     415ns     155ns  1.0250us  cuDeviceGetCount
+                    0.00%     782ns         1     782ns     782ns     782ns  cuInit
+                    0.00%     497ns         2     248ns     239ns     258ns  cuDeviceGetUuid
+                    0.00%     394ns         1     394ns     394ns     394ns  cuDriverGetVersion
+#+END_SRC
+
+
+use the "custom tracking function" coz it's simpler
+
+okay here's what we'll do
+1 - split draw and track into separate threads - done
+2a - make a type of queue that does cudaMalloc and stuff
+2b - convert the following CORE functions to cuda
+     - draw_boxes is lowest priority (because of the heavy calling into opencv2)
+
+so preproc has 3 steps, input is cv mat, output is image_t
+- resize - mat_to_image_resize()
+  - cv::resize (cv::cuda::resize ?)
+- DONE convert colorspace - mat_to_image()
+  - cv::cvtColor (cv::cuda::cvtColor ?)
+- DONE convert from cv mat to image_t - mat_to_image_custom()
+
+for detect... it's a deep call stack, and it calls into the gpu a few times
+- entry point is detect_resized; follow that
+
+for tracking... looks like it's all on cpu
+- entry point is tracking_id; then it's a big loop (embarrasingly
+  parallelizable?)
+
+
+#+BEGIN_SRC C
+det_image = detector.mat_to_image_resize(detection_data.cap_frame);
+> in yolo_v2_class.hpp, std::shared_ptr<image_t> mat_to_image_resize(cv::Mat mat) const
+
+result_vec = detector.detect_resized(*det_image, frame_size.width, frame_size.height, thresh, true);
+> in yolo_v2_class.hpp, std::vector<bbox_t> detect_resized(image_t img, int init_w, int init_h, float
+thresh = 0.2, bool use_mean = false)
+  - calls into detect, somewhere
+
+result_vec = detector.tracking_id(result_vec, true, frame_story, 40);
+> LIB_API std::vector<bbox_t> Detector::tracking_id(std::vector<bbox_t>
+cur_bbox_vec, bool const change_history, int const
+frames_story, int const max_dist)
+
+draw_boxes(draw_frame, result_vec, obj_names, current_fps_det, current_fps_cap, detection_data.frame_id);
+#+END_SRC
+
+- technically we need a better way to display images (proper threading, via
+  Qt or something), but out of scope for this project
+- looks like write to video doesn't work... lower priority
+- draw_boxes should also be parallelized, tbh, but it calls into so many
+  opencv routines for drawing, which is better replaced by some other display
+  system anyway
+
+
+2020/04/22 plan
+
+here's what we're going to do for resize, based on opencv's opencl's resize
+sampler. it's not 100% the same result as opencv's results, but it's close
+enough, i think.
+
+#+BEGIN_SRC python
+for r in range(0, 224):
+    for c in range(0, 224):
+        sx = (c+0.5) * ifx
+        sy = (r+0.5) * ify
+        dst[r][c][0] = img[round(sy)][round(sx)][0]
+        dst[r][c][1] = img[round(sy)][round(sx)][1]
+        dst[r][c][2] = img[round(sy)][round(sx)][2]
+#+END_SRC
+
+- okay, the matrix resize worked really well
+
+after that port the tracker, then get see if you can move the detector more
+into the gpu
+
+- the detector i don't think can be moved. too complex. there's a layer (C)
+  class, and layers inherit from it, and implement the forward_layer_gpu
+  function (among other gpu functions)
+
+also think about drawing bounding boxes on gpu (how to draw multiple strings
+in parallel onto one image? ask mosse if you need to)
+
+then do the gpu buffers
+
+2020/04/23 plan
+
+oops i forgot to ask about the drawing in the meeting
+
+anyway here are the goals for today:
+- move tracking to gpu (just copy the queue into vector for now, it's
+  "constant" time anyway)
+- add accuracy metric (just do a script to read the console output)
+- fix video output
+- nvvp to check when and where and if there is memcpying between cpu and gpu
+  in the detect stage
+
+2020/04/24 plan
+
+- video output is getting messed up somewhere. display looks weird, and can't
+  write to file
+  - when i converted to 1080p there was no problem... 1173x880 and 1174x880
+    both had problems... (video is warped *right* after capture)
+  - and 1920x880 had no problem... looks like it's the width that's affecting
+    something?
+    - 1280x880 has no problem too
+    - according to that guy below, 960 should work fine but 900 will die...
+      - well they both work so idk
+  - somebody else had the same problem lol but no solution:
+    - [[https://github.com/opencv/opencv/issues/12466]]
+  - and so yeah, accuracy for 03_1080p is 0.0741771014799339, and for
+    05_1080p is 0.06823262068892068 (both without kalman)
+
+- move tracking to gpu
+
+- nvvp to check when and where memcpying happening for detection
+
+- nvvp dlib to see if it does gpu calls
+  - nope
+
+- baseline isn't outputting anything
+
+- change memcpy into preproc to async
+  - host-to-device memcpy: 1.23ms
+  - preprocessing on GPU:  15us
+  - device-to-host memcpy: 160us
+- sync memcpy
+  - host-to-device memcpy:  1.28ms
+  - preprocessing (on GPU): 14us
+  - device-to-host memcpy:  160us
+
+2020/04/26
+
+after tracking gpu, prev_bbox_vec is messed up
+
+but cur_bbox_vec seems to be fine? it has 1232 elements after the first (non
+initial) frame... wait no a bunch of it is garbage...
+so maybe an issue with the lenth/bounds checker?
+
+2020/04/27
+
+okay fixed that issue yesterday - i was regenerating the bbox vector with
+size * sizeof(bbox_t); you don't need the sizeof
+
+now we have a problem where there are only 3 frames with detections, first
+and third have matching tracking ids, but frame 2 has a new set of tracking
+ids. need to investigate.
+
+#+BEGIN_SRC log
+warning: Cuda API error detected: cudaGetLastError returned (0x2bd)
+
+CUDA status Error: file: ./src/yolo_v2_kernels.cu : () : line: 172 : build
+time: Apr 27 2020 - 19:16:09 
+
+ CUDA Error: too many resources requested for launch
+ CUDA Error: too many resources requested for launch: Success
+ uselib: ./src/utils.c:325: error: Assertion `0' failed.
+ `
+#+END_SRC
+
+there's a piece of garbage entering the first element of every row in the
+(post-sorted) dist_index_pairs
+- fixed
+
+#+BEGIN_SRC log
+Thread 12 "uselib" received signal CUDA_EXCEPTION_5, Warp Out-of-range
+Address.
+[Switching focus to CUDA kernel 3, grid 36127, block (0,1,0), thread
+(0,15,0), device 0, sm 4, warp 6, lane 16]
+0x00007fff788386c8 in __uAtomicCAS ()
+#+END_SRC
+
+
+2020/04/29
+
+okay here's how to validate that all trackings are unique:
+
+~for frame in $(seq 0 427); do grep "Entry f $frame " log | grep person | awk '{ print $11 }' | ruby -e "a = STDIN.map{|s| s.to_i}; puts a.length == a.uniq.length"; done~
+
+2020/04/30
+
+the cuda-queue between preproc and detection worked, but the detection stage
+has some simple post-processing on cpu that would be difficult to port to
+gpu...
+
+in ~Detector::detect(detection_data_t &, float)~ (src/yolo_v2_class.cpp), the
+main two functionality calls are ~network_predict_prealloc~ and ~get_network_boxes~.
+~network_predict_prealloc~ is the call that has been ported to cuda-queue.
+The latter has not.
+
+The call stack for ~get_network_boxes~ is as follows:
+#+BEGIN_SRC C
+detection *get_network_boxes(...) (src/network.c)
+> void fill_network_boxes(net, ... output_param) (src/network.c)
+#+END_SRC
+
+~fill_network_boxes~ loops through all layers in the network, and for all
+YOLO layers (there is one output YOLO layer and 2 non-output YOLO layers), it
+calls ~size_t get_yolo_detections(layer, ... output_param)~ (src/yolo_layer.c).
+
+~get_yolo_detections~ loops through the output of the yolo layer, and wraps
+them in detection objects to output (as a list of detection objects). The
+output of the layer is actually cuda memcpied over in yolo layer's
+implementation of ~forward_gpu~, which is ~forward_yolo_layer_gpu~ in
+src/yolo_layer.c. It hits the ~if(!state.train || l.onlyforward)~ condition
+and does ~cuda_pull_array_async~ to pull the output of the layer from the gpu
+into the cpu. This last point doesn't seem to cause so much memcpying
+overhead for the internal layers though, so idk how that's working.
+
+Anyway, if it was just that last part that's the case (memcpy from device to
+host at the end of the yolo layer), I could move that to stay in the gpu
+pretty easily. The problem is that the output is aggregated from multiple
+layers, plus there's extra data transformation on top of that. There's also a
+small resize loop in ~Detector::detect_resized()~ after we finish the deep
+gpu and neural network call stack (include/yolo_v2_class.hpp).
+
+* misc
+
+i worked so hard and wrote this prefix sum and gather cuda code (untested),
+so just saving it here
+
+#+BEGIN_SRC 
+__device__ void bbox_prefix_sum(int *prefix_sum_out, bbox_t *bbox_vec_in, int bbox_len)
+{
+	int idy = blockDim.y * blockIdx.y + threadIdx.y;
+	int pout = 0, pin = 1;
+
+	if (idy < bbox_len) {
+		prefix_sum_out[pout*bbox_len + idy] = (idy > 0) ? (bbox_vec_in[idy-1] == 0) : 0;
+		__syncthreads();
+
+		for (int offset = 1; offset < bbox_len; offset *= 2)   {
+			pout = 1 - pout;
+			pin = 1 - pout;
+			if (idy >= offset)
+				prefix_sum_out[pout*bbox_len + idy] += prefix_sum_out[pin*bbox_len + idy - offset];
+			else
+				prefix_sum_out[pout*bbox_len + idy] = prefix_sum_out[pin*bbox_len + idy];
+			__syncthreads();
+		}
+	}
+}
+
+__device__ void bbox_gather(bbox_t *bbox_vec_out, int *scan_vec, bbox_t *bbox_vec_in, int bbox_len)
+{
+	int idy = blockDim.y * blockIdx.y + threadIdx.y;
+
+	if (idy < bbox_len) {
+		if (idy + 1 == bbox_len) {
+			if (bbox_vec_in[idy].track_id == 0)
+				bbox_vec_out[idy] = bbox_vec_in[idy];
+		} else if (scan_vec[idy] != scan_vec[idy + 1]) {
+			bbox_vec_out[scan_vec[idy]] = bbox_vec_in[idy];
+		}
+	}
+}
+#+END_SRC
