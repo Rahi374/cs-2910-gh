@@ -1,0 +1,137 @@
+digraph diagram1 {
+	graph [fontname="inconsolata"];
+	node [fontname="inconsolata"];
+	edge [fontname="inconsolata"];
+
+	{
+		// IO
+		node [shape="parallelogram"];
+		legend_io [label="I/O"];
+
+		vid1 [label="video source 1"];
+		vid2 [label="video source 2"];
+		vid3 [label="video source 3"];
+
+		display [label="display"];
+	}
+
+	{
+		// CPU
+		node [shape="box", style="filled", fillcolor="#49aaff"];
+		legend_cpu_unit [label="CPU unit"];
+
+		vidcap1 [label="capture unit"];
+		vidcap2 [label="capture unit"];
+		vidcap3 [label="capture unit"];
+
+		cpu_track1 [label="cpu track unit"];
+		cpu_track2 [label="cpu track unit"];
+		cpu_track3 [label="cpu track unit"];
+
+		vidout [label="video out unit"]
+		automonitor [label="auto monitor"];
+	}
+
+	{
+		// GPU
+		node [shape="box", style="filled", fillcolor="#55d859"];
+		legend_gpu_unit [label="GPU unit"];
+
+		preproc1 [label="pre-process unit"];
+		preproc2 [label="pre-process unit"];
+		preproc3 [label="pre-process unit"];
+
+		detect1 [label="detect unit"];
+		detect2 [label="detect unit"];
+		detect3 [label="detect unit"];
+
+		track1 [label="gpu track unit"];
+		track2 [label="gpu track unit"];
+		track3 [label="gpu track unit"];
+
+		draw1 [label="draw bboxes unit"];
+		draw2 [label="draw bboxes unit"];
+		draw3 [label="draw bboxes unit"];
+	}
+
+	/*
+	{
+		// GPU or CPU
+
+		node [shape=none];
+
+		hybrid_track1 [
+			label = <<table border="0" cellspacing="0"><tr>
+				<td port="port1" border="1" bgcolor="#55d859">track unit</td>
+				<td port="port2" border="1" bgcolor="#49aaff">track unit</td>
+				</tr></table>>
+		]
+
+		hybrid_track2 [
+			label = <<table border="0" cellspacing="0"><tr>
+				<td port="port1" border="1" bgcolor="#55d859">track unit</td>
+				<td port="port2" border="1" bgcolor="#49aaff">track unit</td>
+				</tr></table>>
+		]
+
+		hybrid_track3 [
+			label = <<table border="0" cellspacing="0"><tr>
+				<td port="port1" border="1" bgcolor="#55d859">track unit</td>
+				<td port="port2" border="1" bgcolor="#49aaff">track unit</td>
+				</tr></table>>
+		]
+	}
+	 */
+
+	{
+		// Buffers
+		node [shape="box", style="filled", fillcolor="#cf8f48"];
+		legend_buffer [label="buffer (limited-size queue)"];
+
+		buf_cap_preproc [label="capture / pre-process buffer"];
+		buf_preproc_detect [label="pre-process / detect buffer"];
+		buf_detect_track [label="detect / track buffer"];
+		buf_track_draw [label="track / draw buffer"];
+		buf_draw_out [label="draw / out buffer"];
+	}
+
+	vid1 -> vidcap1;
+	vid2 -> vidcap2;
+	vid3 -> vidcap3;
+
+	{vidcap1 vidcap2 vidcap3} -> buf_cap_preproc;
+	buf_cap_preproc -> {preproc1 preproc2 preproc3};
+
+	{preproc1 preproc2 preproc3} -> buf_preproc_detect;
+	buf_preproc_detect -> {detect1 detect2 detect3};
+
+	{detect1 detect2 detect3} -> buf_detect_track;
+	buf_detect_track -> {track1 track2 track3};
+	buf_detect_track -> {cpu_track1 cpu_track2 cpu_track3};
+
+	{cpu_track1 cpu_track2 cpu_track3} -> buf_track_draw;
+	{track1 track2 track3} -> buf_track_draw;
+	buf_track_draw -> {draw1 draw2 draw3};
+
+	{draw1 draw2 draw3} -> buf_draw_out;
+	buf_draw_out -> {vidout automonitor};
+
+	vidout -> display;
+
+
+	subgraph cluster_legend {
+		graph[style=dotted];
+
+		mindist=0;
+		ranksep=0;
+		nodesep=0;
+
+		node [shape=box, margin="0,0", width=1, height=0.5];
+		edge [style=invis];
+
+		Legend -> legend_io;
+		legend_io -> legend_cpu_unit;
+		legend_cpu_unit -> legend_gpu_unit;
+		legend_gpu_unit -> legend_buffer;
+	}
+}

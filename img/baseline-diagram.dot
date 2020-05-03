@@ -1,0 +1,144 @@
+digraph baseline_diagram {
+	graph [fontname="inconsolata"];
+	node [fontname="inconsolata"];
+	edge [fontname="inconsolata"];
+
+	{
+		// IO
+		node [shape="parallelogram"];
+		legend_io [label="I/O"];
+
+		vid1 [label="video source 1"];
+		vid2 [label="video source 2"];
+		vid3 [label="video source 3"];
+
+		display [label="display"];
+		vidoutfile [label="video file"];
+	}
+
+	{
+		// CPU
+		node [shape="box", style="filled", fillcolor="#49aaff"];
+		legend_cpu_unit [label="CPU unit"];
+
+		vidcap1 [label="capture unit"];
+		vidcap2 [label="capture unit"];
+		vidcap3 [label="capture unit"];
+
+		cpu_track1 [label="track unit"];
+		cpu_track2 [label="track unit"];
+		cpu_track3 [label="track unit"];
+
+		preproc1 [label="pre-process unit"];
+		preproc2 [label="pre-process unit"];
+		preproc3 [label="pre-process unit"];
+
+		detect_post1 [label="detection post-processing unit"];
+		detect_post2 [label="detection post-processing unit"];
+		detect_post3 [label="detection post-processing unit"];
+
+		draw1 [label="draw bboxes unit"];
+		draw2 [label="draw bboxes unit"];
+		draw3 [label="draw bboxes unit"];
+
+		displayout [label="display unit"]
+		vidout [label="video out unit"]
+		textoutput [label="console text output"];
+	}
+
+	{
+		// GPU
+		node [shape="box", style="filled", fillcolor="#55d859"];
+		legend_gpu_unit [label="GPU unit"];
+
+		detect1 [label="detect unit"];
+		detect2 [label="detect unit"];
+		detect3 [label="detect unit"];
+	}
+
+	{
+		// Buffers
+		node [shape="box", style="filled", fillcolor="#cf8f48"];
+		legend_buffer [label="buffer"];
+
+		buf_cap_preproc1 [label="capture / pre-process buffer"];
+		buf_cap_preproc2 [label="capture / pre-process buffer"];
+		buf_cap_preproc3 [label="capture / pre-process buffer"];
+
+		buf_preproc_detect1 [label="pre-process / detect buffer"];
+		buf_preproc_detect2 [label="pre-process / detect buffer"];
+		buf_preproc_detect3 [label="pre-process / detect buffer"];
+
+		buf_detect_track1 [label="detect / track buffer"];
+		buf_detect_track2 [label="detect / track buffer"];
+		buf_detect_track3 [label="detect / track buffer"];
+
+		buf_track_draw1 [label="track / draw buffer"];
+		buf_track_draw2 [label="track / draw buffer"];
+		buf_track_draw3 [label="track / draw buffer"];
+
+		buf_draw_out1 [label="draw / out buffer"];
+		buf_draw_out2 [label="draw / out buffer"];
+		buf_draw_out3 [label="draw / out buffer"];
+	}
+
+	vid1 -> vidcap1;
+	vid2 -> vidcap2;
+	vid3 -> vidcap3;
+
+	vidcap1 -> buf_cap_preproc1;
+	vidcap2 -> buf_cap_preproc2;
+	vidcap3 -> buf_cap_preproc3;
+	buf_cap_preproc1 -> preproc1;
+	buf_cap_preproc2 -> preproc2;
+	buf_cap_preproc3 -> preproc3;
+
+	preproc1 -> buf_preproc_detect1;
+	preproc2 -> buf_preproc_detect2;
+	preproc3 -> buf_preproc_detect3;
+	buf_preproc_detect1 -> detect1;
+	buf_preproc_detect2 -> detect2;
+	buf_preproc_detect3 -> detect3;
+
+	detect1 -> detect_post1;
+	detect2 -> detect_post2;
+	detect3 -> detect_post3;
+	detect_post1 -> buf_detect_track1;
+	detect_post2 -> buf_detect_track2;
+	detect_post3 -> buf_detect_track3;
+	buf_detect_track1 -> cpu_track1;
+	buf_detect_track2 -> cpu_track2;
+	buf_detect_track3 -> cpu_track3;
+
+	cpu_track1 -> buf_track_draw1;
+	cpu_track2 -> buf_track_draw2;
+	cpu_track3 -> buf_track_draw3;
+	buf_track_draw1 -> draw1;
+	buf_track_draw2 -> draw2;
+	buf_track_draw3 -> draw3;
+
+	draw1 -> buf_draw_out1;
+	draw2 -> buf_draw_out2;
+	draw3 -> buf_draw_out3;
+	{buf_draw_out1 buf_draw_out2 buf_draw_out3} -> {displayout vidout textoutput};
+
+	vidout -> vidoutfile;
+	displayout -> display;
+
+
+	subgraph cluster_legend {
+		graph[style=dotted];
+
+		mindist=0;
+		ranksep=0;
+		nodesep=0;
+
+		node [shape=box, margin="0,0", width=1, height=0.5];
+		edge [style=invis];
+
+		Legend -> legend_io;
+		legend_io -> legend_cpu_unit;
+		legend_cpu_unit -> legend_gpu_unit;
+		legend_gpu_unit -> legend_buffer;
+	}
+}
